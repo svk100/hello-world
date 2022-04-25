@@ -7,7 +7,7 @@ commands:
           at: ~/
       - run:
           command: |
-            cat .circleci/ansible/migstat.txt
+            cat .circleci/migstat.txt
             status=$( cat .circleci/ansible/migstat.txt )
             echo $status
             if(( $status -eq 0 ));

@@ -6,16 +6,17 @@ commands:
       - attach_workspace:
           at: ~/
       - run:
-        command: |
-          cat .circleci/ansible/migstat.txt
-          status=$( cat .circleci/ansible/migstat.txt )
-          echo $status
-          if(( $status -eq 0 ));
-          then
-            echo Zero
-          else
-            echo Not Zero
-          fi
+          command: |
+            cat .circleci/ansible/migstat.txt
+            status=$( cat .circleci/ansible/migstat.txt )
+            echo $status
+            if(( $status -eq 0 ));
+            then
+              echo Zero
+            else
+              echo Not Zero
+            fi
+
 jobs:
   say-hello:
     docker:

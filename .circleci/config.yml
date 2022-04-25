@@ -6,11 +6,12 @@ commands:
       - attach_workspace:
           at: ~/
       - run:
+          name: Testing if statement in Ansible
           command: |
             cat .circleci/migstat.txt
             status=$( cat .circleci/migstat.txt )
             echo $status
-            if(( $status -eq 0 ));
+            if [ $status -eq 0 ];
             then
               echo Zero
             else

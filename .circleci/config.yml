@@ -29,7 +29,7 @@ jobs:
             at: ~/
       - run:
           name: "Say hello"
-          command: echo '1' > .circleci/migstat.txt
+          command: echo '0' > .circleci/migstat.txt
       - persist_to_workspace:
           root: ~/
           paths:

@@ -25,6 +25,7 @@ jobs:
           name: "test dir"
           command: |
             pwd
+            cd test
             cat test.txt
 
   update-job:

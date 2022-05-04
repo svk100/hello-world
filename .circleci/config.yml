@@ -16,7 +16,16 @@ jobs:
       - checkout
       - run:
           name: "Say hello"
-          command: echo 'build'
+          command: |
+            mkdir test
+            cd test
+            pwd
+            echo 'build' > test.txt
+      - run
+         name: "test"
+         command: |
+           pwd
+           cat test.txt
 
   update-job:
     docker:

@@ -1,42 +1,39 @@
 version: 2.1
 
-commands:
-  test-sh:
-    steps:
-      - attach_workspace:
-          at: ~/
-      - run:
-          name: Testing if statement in Ansible
-          command: |
-            cat .circleci/migstat.txt
-            status=$( cat .circleci/migstat.txt )
-            echo $status
-            if [ $status -eq 0 ];
-            then
-              echo Zero
-            else
-              echo Not Zero
-            fi
+parameters:
+  build:
+    type: boolean
+    default: false
+  update:
+    type: boolean
+    default: false
 
 jobs:
-  say-hello:
+  build-job:
     docker:
-      - image: python:3.7-alpine3.11
-
+      - image: cimg/base:2021.04
     steps:
       - checkout
-      - attach_workspace:
-            at: ~/
       - run:
           name: "Say hello"
-          command: echo '0' > .circleci/migstat.txt
-      - persist_to_workspace:
-          root: ~/
-          paths:
-            - project/.circleci/migstat.txt
-      - test-sh
+          command: echo 'build'
 
+  update-job:
+    docker:
+      - image: cimg/base:2021.04
+    steps:
+      - checkout
+      - run:
+          name: "Say hello"
+          command: echo 'update'
+  
 workflows:
-  say-hello-workflow:
+  build-workflow:
+    when: << pipeline.parameters.build >>
     jobs:
-      - say-hello
+      - build-job
+ 
+  update-workflow:
+    when: << pipeline.parameters.update >>
+    jobs:
+      - update-job

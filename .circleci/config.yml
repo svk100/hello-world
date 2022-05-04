@@ -22,10 +22,10 @@ jobs:
             pwd
             echo 'build' > test.txt
       - run
-         name: "test dir"
-         command: |
-           pwd
-           cat test.txt
+          name: "test dir"
+          command: |
+            pwd
+            cat test.txt
 
   update-job:
     docker:

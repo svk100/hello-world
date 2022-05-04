@@ -22,7 +22,7 @@ jobs:
             pwd
             echo 'build' > test.txt
       - run
-         name: "test"
+         name: "test dir"
          command: |
            pwd
            cat test.txt
